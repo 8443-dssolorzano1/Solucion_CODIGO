@@ -16,10 +16,10 @@
          <input type="text" name="txtTransversal" value="">
         
 		<br><br>
-		<!--<input type="checkbox" name="chbEntrega1" value="PROPIETARIO"checked> Entrega al propietario.<br>
-        <input type="checkbox" name="chbEntrega2" value="TERCERO"> Entrega a un tercero.-->
-        <input type="radio" id="entrega" name="rbEntrega2" value="PROPIETARIO" checked>Propietario<br>
-        <input type="radio" id="entrega" name="rbEntrega2" value="TERCERO">Tercero
+		    <input type="checkbox" name="chbEntrega1" id="Entrega1" value="PROPIETARIO" onclick="ActivarB()"> Entrega al propietario.<br>
+        <input type="checkbox" name="chbEntrega2" id="Entrega2" value="TERCERO" onclick="ActivarF()"> Entrega a un tercero.
+        <!--<input type="radio" id="entrega" name="rbEntrega2" value="PROPIETARIO" checked>Propietario<br>
+        <input type="radio" id="entrega" name="rbEntrega2" value="TERCERO">Tercero-->
 
          <br><br>
          Cantones: <select  name="cmbCantones">
@@ -38,12 +38,12 @@
          </select>
 		 
          <br><br>
-           <input type="submit" name="SubmitDireccion" value="REGISTRAR">
+           <input type="submit" name="SubmitDireccion" id="Submitb" value="ENVIAR DATOS" disabled>
        </fieldset>
     </form>
 	
 	<br>
-    <form action="./Script_PHP/procesa.php" method="POST" name="FormConfidencial" target="_blank">
+    <form action="./Script_PHP/procesa.php" method="POST" name="FormConfidencial" id="form1" target="_blank" style="display: none;">
       <br>  
        <fieldset>
          <legend>INFORMACIÓN CONFIDENCIAL</legend>
@@ -59,6 +59,29 @@
     </form>
     <br><br>
     <a href="index.html">Regresar</a>
-    
+    <script>
+            var objeto;
+            var check;
+            function ActivarB() { 
+                objeto = document.getElementById("Submitb");
+                check = document.getElementById("Entrega1");
+                if(check.checked == true){
+                  objeto.disabled = false; 
+                }
+                else{
+                  objeto.disabled = true;
+                }
+            } 
+            function ActivarF() { 
+                objeto = document.getElementById("form1");
+                check = document.getElementById("Entrega2");
+                if(check.checked == true){
+                  objeto.style.display = "block"; 
+                }
+                else{
+                  objeto.style.display = "none";
+                }
+            } 
+       </script>
   </body>
 </html>
